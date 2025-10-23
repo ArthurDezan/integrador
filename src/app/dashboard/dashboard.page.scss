@@ -1,40 +1,98 @@
-/* Estiliza o fundo da área de conteúdo */
+/* Em: src/app/dashboard/dashboard.page.scss */
+
 ion-content {
-    /* Usamos um gradiente suave com as cores do tema que definimos */
-    --background: linear-gradient(to bottom, var(--ion-color-light-tint) 0%, var(--ion-color-light) 100%);
+    --background: var(--ion-color-light);
   }
   
-  /* Estiliza a classe .sensor-card que adicionámos 
-    ao <ion-card> no nosso HTML 
+  /* Estilo para o título "Histórico de Leituras" */
+  ion-list-header {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: var(--ion-color-dark);
+    margin-top: 16px;
+  }
+  
+  /* Remove o fundo da <ion-list> para que os 
+    cartões pareçam flutuar sobre o fundo do conteúdo.
   */
-  .sensor-card {
-    margin: 0; // Remove a margem padrão do cartão
+  ion-list {
+    --background: transparent;
+  }
+  
+  /* O novo cartão de leitura */
+  .reading-card {
+    /* Remove as margens padrão do ion-card quando 
+       ele está dentro de uma ion-list[inset] 
+    */
+    margin-left: 0;
+    margin-right: 0;
+    margin-top: 0;
+    margin-bottom: 16px; // Espaço entre os cartões
     
-    // Adiciona uma sombra suave para um efeito "flutuante"
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    background: #ffffff;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.07);
+    border-radius: 12px; // Garante o arredondamento
   
-    // Cantos arredondados
-    border-radius: 12px;
-  
-    // Um gradiente subtil dentro do próprio cartão
-    --background: linear-gradient(135deg, #ffffff 0%, #fcfdff 100%);
-  
-    /* Garante que os itens dentro do cartão não têm fundo */
-    ion-item {
-      --background: transparent;
-      --padding-start: 0; // Remove o espaçamento inicial do item
+    ion-card-header {
+      padding-bottom: 8px; // Menos espaço abaixo do título
     }
-  
-    /* Deixa o título do cartão com a cor primária */
+    
     ion-card-title {
-      color: var(--ion-color-primary);
-      font-weight: 600; // Torna a fonte um pouco mais forte
+      color: var(--ion-color-primary); // Usa a cor do tema
+      font-size: 1.25rem;
     }
   
-    /* Estiliza os crachás (badges) */
-    ion-badge {
-      font-size: 0.9em;
-      padding: 8px 12px;
-      border-radius: 10px;
+    /* Estiliza os itens dentro do cartão */
+    ion-item {
+      --background: transparent; // Fundo transparente
+      --padding-start: 0;
+      --inner-padding-end: 0;
+  
+      ion-icon {
+        margin-right: 12px;
+        font-size: 1.4rem;
+      }
+  
+      ion-label {
+        font-weight: 500;
+        color: var(--ion-color-dark);
+      }
+  
+      /* A 'nota' (o valor) */
+      ion-note {
+        font-size: 1.1rem;
+        font-weight: 600;
+        color: var(--ion-color-dark);
+      }
+    }
+  }
+  
+  
+  /* Estes estados de 'loading' e 'error'
+    continuam úteis.
+  */
+  .loading-container,
+  .error-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 80vh;
+    text-align: center;
+    color: var(--ion-color-medium);
+    padding: 16px; // Adiciona padding para o texto de erro não tocar nas bordas
+  
+    ion-spinner {
+      transform: scale(1.5);
+      margin-bottom: 16px;
+    }
+    
+    ion-icon {
+      font-size: 4rem;
+      margin-bottom: 16px;
+    }
+  
+    p {
+      font-size: 1.1rem;
     }
   }
