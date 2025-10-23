@@ -12,8 +12,11 @@ export class Api {
     constructor(private http:HttpClient) {}
 
     getSensor():Observable<any[]> {
-      return this.http.get<any[]>(this.apiUrl + "/api/leituras/Dezan");
+      return this.http.get<any[]>(this.apiUrl + "/api/historico-dia/Dezan?data=2025-10-24");
     }
 
+    getHistorico(data:string):Observable<any[]> {
+      return this.http.get<any[]>(this.apiUrl + `/api/historico-dia/Dezan?data=${data}`);
+    }
 
 }

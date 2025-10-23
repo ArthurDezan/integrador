@@ -1,73 +1,28 @@
 <ion-header [translucent]="true">
-  <ion-toolbar color="primary">
-    <ion-title>Dashboard de Sensores</ion-title>
-    <ion-buttons slot="end">
-      <ion-button (click)="carregarDados()" [disabled]="isLoading">
-        <ion-icon name="refresh-outline" slot="icon-only"></ion-icon>
-      </ion-button>
-    </ion-buttons>
+  <ion-toolbar>
+    <ion-title>dashboard</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-refresher slot="fixed" (ionRefresh)="handleRefresh($event)">
-    <ion-refresher-content></ion-refresher-content>
-  </ion-refresher>
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">dashboard</ion-title>
+    </ion-toolbar>
+  </ion-header>
 
-  <div *ngIf="isLoading" class="loading-container">
-    <ion-spinner name="crescent"></ion-spinner>
-    <p>A carregar dados...</p>
+  <div *ngFor="let i of dados">
+    <p>temperatura: {{i["temperatura"]}}</p>
+    <p>umidade: {{i["umidade"]}}</p>
+    <p>PH: {{i["PH"]}}</p>
   </div>
 
-  <div *ngIf="error && !isLoading" class="error-container">
-    <ion-icon name="alert-circle-outline" color="danger"></ion-icon>
-    <p>{{ error }}</p>
-    <ion-button (click)="carregarDados()">Tentar Novamente</ion-button>
-  </div>
+  <ion-datetime presentation="date" [(ngModel)]="dataSelecionada"></ion-datetime>
+  <ion-button (click)="getData(dataSelecionada)">Default</ion-button>
 
-  <div *ngIf="dados.length > 0 && !isLoading">
-    
-    <ion-header collapse="condense">
-      <ion-toolbar color="primary">
-        <ion-title size="large">Leituras</ion-title>
-      </ion-toolbar>
-    </ion-header>
+  <div *ngFor="let d of dataSelecionada">
+    <p>Data selecionada: {{d}}</p>
 
-    <ion-list-header>Histórico de Leituras</ion-list-header>
-
-    <ion-list [inset]="true">
-      
-      <ion-card *ngFor="let i of dados; let idx = index" class="reading-card">
-        <ion-card-header>
-          <ion-card-title>Leitura #{{ idx + 1 }}</ion-card-title>
-          </ion-card-header>
-
-        <ion-card-content>
-          <ion-item lines="none">
-            <ion-icon name="thermometer-outline" slot="start" color="warning"></ion-icon>
-            <ion-label>Temperatura</ion-label>
-            <ion-note slot="end">{{ i['temperatura'] | number:'1.1-1' }} °C</ion-note>
-          </ion-item>
-          
-          <ion-item lines="none">
-            <ion-icon name="water-outline" slot="start" color="secondary"></ion-icon>
-            <ion-label>Umidade</ion-label>
-            <ion-note slot="end">{{ i['umidade'] | number:'1.0-0' }} %</ion-note>
-          </ion-item>
-          
-          <ion-item lines="none">
-            <ion-icon name="beaker-outline" slot="start" color="tertiary"></ion-icon>
-            <ion-label>PH</ion-label>
-            <ion-note slot="end">{{ i['PH'] | number:'1.1-1' }}</ion-note>
-          </ion-item>
-        </ion-card-content>
-      </ion-card>
-    </ion-list>
-  </div>
-
-  <div *ngIf="dados.length === 0 && !isLoading && !error" class="error-container">
-    <ion-icon name="information-circle-outline" color="primary"></ion-icon>
-    <p>Nenhuma leitura encontrada no histórico.</p>
   </div>
 
 </ion-content>
