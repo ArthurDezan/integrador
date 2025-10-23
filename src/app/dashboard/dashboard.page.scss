@@ -1,0 +1,40 @@
+/* Estiliza o fundo da área de conteúdo */
+ion-content {
+    /* Usamos um gradiente suave com as cores do tema que definimos */
+    --background: linear-gradient(to bottom, var(--ion-color-light-tint) 0%, var(--ion-color-light) 100%);
+  }
+  
+  /* Estiliza a classe .sensor-card que adicionámos 
+    ao <ion-card> no nosso HTML 
+  */
+  .sensor-card {
+    margin: 0; // Remove a margem padrão do cartão
+    
+    // Adiciona uma sombra suave para um efeito "flutuante"
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  
+    // Cantos arredondados
+    border-radius: 12px;
+  
+    // Um gradiente subtil dentro do próprio cartão
+    --background: linear-gradient(135deg, #ffffff 0%, #fcfdff 100%);
+  
+    /* Garante que os itens dentro do cartão não têm fundo */
+    ion-item {
+      --background: transparent;
+      --padding-start: 0; // Remove o espaçamento inicial do item
+    }
+  
+    /* Deixa o título do cartão com a cor primária */
+    ion-card-title {
+      color: var(--ion-color-primary);
+      font-weight: 600; // Torna a fonte um pouco mais forte
+    }
+  
+    /* Estiliza os crachás (badges) */
+    ion-badge {
+      font-size: 0.9em;
+      padding: 8px 12px;
+      border-radius: 10px;
+    }
+  }

@@ -11,6 +11,8 @@ export class DashboardPage implements OnInit {
 
   constructor(private apiServise: Api) { }
 
+  dados: any[] = [];
+
   ngOnInit() {
     this.carregarDados();
   }
@@ -19,6 +21,7 @@ export class DashboardPage implements OnInit {
     this.apiServise.getSensor().subscribe({
       next: (data: any[]) => {
         console.log(data);
+        this.dados = data
       },
       error: (err) => {
         console.error('Erro ao carregar dados do sensor:', err);
