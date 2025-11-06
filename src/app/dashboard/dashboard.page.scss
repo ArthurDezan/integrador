@@ -1,0 +1,35 @@
+/* Adiciona um preenchimento padrão ao conteúdo da página */
+ion-content {
+    --padding-start: 16px;
+    --padding-end: 16px;
+    --padding-top: 16px;
+    --padding-bottom: 16px;
+  }
+  
+  /* Centraliza a grade do seletor de data */
+  ion-grid {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 16px; /* Adiciona espaço abaixo do seletor */
+  }
+  
+  /* Estiliza os cards dos gráficos */
+  ion-card {
+    margin-top: 0;
+    margin-bottom: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 12px; // Cantos arredondados
+  }
+  
+  ion-card-title {
+    color: var(--ion-color-primary); // Usa a cor primária no título
+    font-weight: 600; // Fonte um pouco mais forte
+    font-size: 1.2rem;
+  }
+  
+  /* Garante que o canvas esteja contido no card */
+  canvas {
+    width: 100% !important;
+    height: auto !important;
+  }
