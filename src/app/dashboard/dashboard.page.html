@@ -17,12 +17,16 @@
         <ion-datetime presentation="date" [(ngModel)]="dataSelecionada"></ion-datetime>
       </ion-col>
       <ion-col size="auto">
-        <ion-button (click)="getData(dataSelecionada)">
+        
+        <ion-button (click)="buscarDadosManualmente(dataSelecionada)">
           <ion-icon name="search" slot="start"></ion-icon>
           Buscar
         </ion-button>
+      
       </ion-col>
+    
     </ion-row>
+
   </ion-grid>
 
   <ion-card>
@@ -52,4 +56,4 @@
     </ion-card-content>
   </ion-card>
 
-  </ion-content>
+</ion-content>
